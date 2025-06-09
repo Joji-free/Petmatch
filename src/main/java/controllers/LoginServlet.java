@@ -33,5 +33,11 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("error", "Correo o contraseña incorrectos.");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
+        if (!usuario.isVerificado()) {
+            request.setAttribute("mensaje", "Verifica tu correo antes de iniciar sesión.");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            return;
+        }
+
     }
 }
